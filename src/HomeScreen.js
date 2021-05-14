@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { GlobalAppStates } from './Constants';
+import CenteredButton from './reusable/CenteredButton';
 
 const background_image = require('../assets/disc_golf_basket.jpg')
 
 class HomeScreen extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         // set state variables
         this.state = {}
         // set constants
@@ -19,17 +20,12 @@ class HomeScreen extends Component {
                 <Image source={background_image} style={styles.backgroundImage} />
                 <View style={styles.center}>
                     <Text style={styles.textCenter}>Disc Golf Shuffle</Text>
-                    <TouchableOpacity 
-                        activeOpacity={this.constants.buttonOpacity}
-                        style={styles.buttonCenter} >
-                        <Text>Shuffle Mode</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        activeOpacity={this.constants.buttonOpacity} 
-                        style={styles.buttonCenter} 
-                        onPress={() => {this.props.update_mode(GlobalAppStates[1])}} >
-                        <Text>Roulette Mode</Text>
-                    </TouchableOpacity>
+                    <CenteredButton 
+                        action={()=>{this.props.navigation.navigate(GlobalAppStates.shuffle)}}
+                        label="Shuffle Mode" />
+                    <CenteredButton 
+                        action={()=>{this.props.navigation.navigate(GlobalAppStates.roulette)}}
+                        label="Roulette Mode" />
                 </View>
             </View>
         );
@@ -39,9 +35,10 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     backgroundImage: {
         position: 'absolute',
-        top: 0,
         // left: '-50%',
         bottom: 0,
+        top: 0,
+        height: '100%',
         // right: '50%',
         opacity: 0.3
     },
@@ -54,19 +51,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
-    },
-    buttonCenter: {
-        flexDirection: 'row',
-        height: 50,
-        width: '60%',
-        backgroundColor: 'lightblue',
-        alignItems: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        elevation: 3,
     },
     textCenter: {
         textAlign: 'center',

@@ -1,69 +1,75 @@
-import React, { Component, version } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, BackHandler } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalAppStates } from './Constants';
+import CenteredButton from './reusable/CenteredButton';
+import Spinner from './RouletteSpinner';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class Roulette extends Component {
-    constructor() {
-        super();
-        this.state = {}
-    }
-
-    backAction = () => {
-        this.props.update_mode(GlobalAppStates[0]);
-    }
-
-    // back handler to main menu
-    componentDidMount() {
-        this.backHandler = BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.backAction
-        );
-    }
-
-    componentWillUnmount() {
-        this.backHandler.remove();
+    constructor(props) {
+        super(props);
+        this.state = {
+            outputRoll: "Press Spin! to make your first roll"
+        }
     }
 
     render() {
         return (
-            <View style={styles.fill}>
-            <View style={styles.center}>
-                <TouchableOpacity 
-                    activeOpacity={0.93} 
-                    style={styles.buttonCenter}
-                    onPress={this.backAction} >
-                    <Text>Back</Text>
-                </TouchableOpacity>
-                <Text>Roullete</Text>
-            </View>
-            </View>
+            <ScrollView style={styles.center}>
+                <View style={styles.partition}>
+                    <Spinner />
+                </View>
+                <View style={styles.partition}>
+                    <CenteredButton
+                        action={() => { }}
+                        label="Spin!" />
+                </View>
+                <View style={styles.partition}>
+                    <View style={styles.textBackground}>
+                        <Text style={{ fontSize: 20, textAlign: 'center' }}>{this.state.outputRoll}</Text>
+                    </View>
+                </View>
+                <View style={styles.partition}>
+                    <CenteredButton
+                        action={() => { console.log("test") }}
+                        label="Manage Roll Options" />
+                </View>
+            </ScrollView>
         );
     }
 }
 
+
 const styles = StyleSheet.create({
-    fill: {
-        flex: 1,
-        width: '100%',
-    },
-    buttonCenter: {
-        flexDirection: 'row',
-        height: 50,
-        width: '60%',
-        backgroundColor: 'lightblue',
-        alignItems: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        elevation: 3,
-    },
     center: {
         flex: 1,
-        justifyContent: 'center',
         alignContent: 'center',
         textAlign: 'center',
+        width: '100%',
+    },
+    anchorTop: {
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+    },
+    anchorBottom: {
+        flex: 1,
+        position: 'absolute',
+        bottom: 20,
+        width: '100%',
+    },
+    partition: {
+        flex: 1,
+        marginBottom: 20,
+    },
+    textBackground: {
+        width: '90%',
+        height: '100%',
+        backgroundColor: '#DDD',
+        borderRadius: 5,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        padding: 20,
     },
 });
 
