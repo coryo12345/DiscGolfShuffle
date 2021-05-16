@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-const updateDelay = 0.1;
-const imagesPerTile = 5; // first has x, second 2x, third 3x
+const updateDelay = 0.07;
+const imagesPerTile = 9; // first has x, second 2x, third 3x
 
 const images = [
-    require('../assets/spin_disc.png')
+    require('../assets/spin_disc.png'),
+    require('../assets/spin_basket.png'),
+    require('../assets/spin_flag.png'),
+    require('../assets/spin_unknown.png')
 ]
 
 class Spinner extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            spinCount: 0,
             image1: [],
             image2: [],
             image3: [],
@@ -45,13 +49,32 @@ class Spinner extends Component {
         this.setState(st);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.spinState == 1) {
+            this.props.ack();
+            this.state.spinCount = 0;
+        }
+        if (this.props.spinState == 2) {
+            setTimeout(this.spinTick, updateDelay*1000);
+        }
+    }
+
+    spinTick = () => {
+        if (this.state.spinCount < (imagesPerTile*3)-1) {
+            this.setState({spinCount: this.state.spinCount+1})
+        }
+        else {
+            this.props.endSpin();
+        }
+    }
+
     render() {
         return (
             <View style={styles.background} >
                 <View style={styles.row} >
-                    <SpinItem image={images[this.state.image1[0]]} />
-                    <SpinItem image={images[this.state.image2[0]]} />
-                    <SpinItem image={images[this.state.image3[0]]} />
+                    <SpinItem image={images[this.state.image1[Math.min(this.state.spinCount, this.state.image1.length-1)]]} />
+                    <SpinItem image={images[this.state.image2[Math.min(this.state.spinCount, this.state.image2.length-1)]]} />
+                    <SpinItem image={images[this.state.image3[Math.min(this.state.spinCount, this.state.image3.length-1)]]} />
                 </View>
             </View>
         );

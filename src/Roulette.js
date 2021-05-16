@@ -9,19 +9,38 @@ class Roulette extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            outputRoll: "Press Spin! to make your first roll"
+            outputRoll: "Press Spin! to make your first roll",
+            spinState: 0 // 0: no spin 1: requested spin
         }
+    }
+
+    startSpin = () => {
+        if (this.state.spinState == 0) {
+            this.setState({ spinState: 1 });
+        }
+    }
+
+    startSpinAck = () => {
+        if (this.state.spinState == 1) {
+            this.setState({ spinState: 2 });
+        }
+    }
+
+    endSpin = () => {
+        // TODO pick random output here
+        let roll_str = randomRollString();
+        this.setState({ spinState: 0, outputRoll: roll_str });
     }
 
     render() {
         return (
             <ScrollView style={styles.center}>
                 <View style={styles.partition}>
-                    <Spinner />
+                    <Spinner spinState={this.state.spinState} endSpin={this.endSpin} ack={this.startSpinAck} />
                 </View>
                 <View style={styles.partition}>
                     <CenteredButton
-                        action={() => { }}
+                        action={this.startSpin}
                         label="Spin!" />
                 </View>
                 <View style={styles.partition}>
@@ -39,6 +58,65 @@ class Roulette extends Component {
     }
 }
 
+function randomRollString() {
+    const options = {
+        angle: {
+            Hyzer: true,
+            Anhyzer: true,
+            Roller: true,
+            Flat: true,
+        },
+        stability: {
+            Understable: true,
+            Neutral: true,
+            Overstable: true,
+        },
+        speed: {
+            Putter: true,
+            Midrange: true,
+            Fairway: true,
+            Driver: true,
+        }
+    }
+    // get angle
+    var keys = Object.keys(options.angle);
+    for (let i = keys.length-1; i >= 0; i--) {
+        if (options.angle[keys[i]] === false) {
+            keys.splice(i, 1);
+        }
+    }
+    if (keys.length == 0)
+        var angle_str = "";
+    else
+        var angle_str = keys[keys.length * Math.random() << 0] + " release, "
+    // get stability
+    var keys = Object.keys(options.stability);
+    for (let i = keys.length-1; i >= 0; i--) {
+        if (options.stability[keys[i]] === false) {
+            keys.splice(i, 1);
+        }
+    }
+    if (keys.length == 0)
+        var stable_str = "";
+    else
+        var stable_str = keys[keys.length * Math.random() << 0]
+    // get speed
+    var keys = Object.keys(options.speed);
+    for (let i = keys.length-1; i >= 0; i--) {
+        if (options.speed[keys[i]] === false) {
+            keys.splice(i, 1);
+        }
+    }
+    if (keys.length == 0)
+        var speed_str = "";
+    else
+        var speed_str = keys[keys.length * Math.random() << 0]
+    
+    if (angle_str==="" && stable_str==="" && speed_str==="")
+        return "Wildcard! Player's Choice."
+    
+    return `${angle_str} ${stable_str} ${speed_str}`;
+}
 
 const styles = StyleSheet.create({
     center: {
@@ -64,12 +142,16 @@ const styles = StyleSheet.create({
     },
     textBackground: {
         width: '90%',
-        height: '100%',
+        height: 140, // 4 * lineheight
         backgroundColor: '#DDD',
         borderRadius: 5,
         marginLeft: 'auto',
         marginRight: 'auto',
-        padding: 20,
+        padding: 30,
+        lineHeight: 20,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
 
