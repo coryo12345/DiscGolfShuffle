@@ -5,10 +5,10 @@ const updateDelay = 0.07;
 const imagesPerTile = 9; // first has x, second 2x, third 3x
 
 const images = [
-    require('../assets/spin_disc.png'),
-    require('../assets/spin_basket.png'),
-    require('../assets/spin_flag.png'),
-    require('../assets/spin_unknown.png')
+    require('../../assets/spin_disc.png'),
+    require('../../assets/spin_basket.png'),
+    require('../../assets/spin_flag.png'),
+    require('../../assets/spin_unknown.png')
 ]
 
 class Spinner extends Component {

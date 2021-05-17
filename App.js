@@ -1,13 +1,15 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, SafeAreaView, Platform, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, Platform, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/HomeScreen';
-import Roulette from './src/Roulette';
+import Roulette from './src/roulette/Roulette';
 import ShuffleScreen from './src/ShuffleScreen';
-import { GlobalAppStates } from './src/Constants';
+import { GlobalAppStates, DisplayConfig } from './src/Constants';
+import RouletteOptions from './src/roulette/RouletteOptions';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,9 @@ class App extends Component {
                         <Stack.Screen
                             name={GlobalAppStates.roulette}
                             component={Roulette} />
+                        <Stack.Screen 
+                            name={GlobalAppStates.rouletteOptions}
+                            component={RouletteOptions} />
                         <Stack.Screen
                             name={GlobalAppStates.shuffle}
                             component={ShuffleScreen} />
