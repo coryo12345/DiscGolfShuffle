@@ -24,7 +24,6 @@ class App extends Component {
     }
 
     render() {
-        // const android_status_padding = this.state.android_status_padding ? <View style={styles.statusPadding}></View> : <View></View>;
         return (
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName={GlobalAppStates[0]}>
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     statusPadding: {
-        // flex: 1,
         height: 30,
         width: '100%',
     },

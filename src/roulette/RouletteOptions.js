@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Platform } from 'react-native';
 import { RouletteDefaultConfig, GlobalAppStates, DisplayConfig } from '../Constants';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from 'react-native-check-box';
 import { ScrollView } from 'react-native-gesture-handler';
 
 class RouletteOptions extends Component {
@@ -12,7 +12,8 @@ class RouletteOptions extends Component {
         };
     }
 
-    saveChange = (category, option, val) => {
+    saveChange = (category, option) => {
+        let val = !this.state.config[category][option];
         this.state.config[category][option] = val;
         RouletteDefaultConfig[category][option] = val;
         this.setState({});
@@ -20,24 +21,13 @@ class RouletteOptions extends Component {
 
 
     Toggle(category, option) {
-        if (Platform.OS === 'android')
-            var checkbox = (<CheckBox
-                disabled={false}
-                value={this.state.config[category][option]}
-                onValueChange={(newValue) => { this.saveChange(category, option, newValue) }}
-                tintColors={{ true: 'royalblue' }} />
-            );
-        else if (Platform.OS === 'ios')
-            var checkbox = (<CheckBox
-                disabled={false}
-                value={this.state.config[category][option]}
-                onValueChange={(newValue) => { this.saveChange(category, option, newValue) }}
-                onFillColor={'royalblue'} />
-            );
         return (
             <View style={{ width: '100%', flexDirection: 'row' }}>
-                {checkbox}
-                <Text style={{ width: '100%', height: '100%', textAlignVertical: 'center' }}>{option}</Text>
+                <CheckBox
+                    style={{ flex: 1 }}
+                    onClick={() => { this.saveChange(category, option) }}
+                    isChecked={this.state.config[category][option]}
+                    rightText={option} />
             </View>
         );
     }
@@ -77,8 +67,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     bold: {
-        // fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        marginBottom: 5,
     },
 });
 

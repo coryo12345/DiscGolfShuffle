@@ -51,6 +51,11 @@ class Spinner extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.spinState == 1) {
+            // rotate arrays by 1 so it appears to change
+            this.state.image1.push(this.state.image1.shift());
+            this.state.image2.push(this.state.image2.shift());
+            this.state.image3.push(this.state.image3.shift());
+            // react processing
             this.props.ack();
             this.state.spinCount = 0;
         }

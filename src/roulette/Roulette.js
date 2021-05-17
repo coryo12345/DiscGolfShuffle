@@ -42,7 +42,6 @@ class Roulette extends Component {
     }
 
     endSpin = () => {
-        // TODO pick random output here
         let roll_str = randomRollString();
         this.setState({ spinState: 0, outputRoll: roll_str });
     }
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     },
     textBackground: {
         width: '90%',
-        height: 140, // 4 * lineheight
+        height: 140,
         backgroundColor: '#DDD',
         borderRadius: 5,
         marginLeft: 'auto',

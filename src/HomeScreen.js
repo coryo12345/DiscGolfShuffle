@@ -35,11 +35,9 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     backgroundImage: {
         position: 'absolute',
-        // left: '-50%',
         bottom: 0,
         top: 0,
         height: '100%',
-        // right: '50%',
         opacity: 0.3
     },
     fill: {
