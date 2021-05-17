@@ -27,7 +27,8 @@ class Spinner extends Component {
         let st = {
             image1: [],
             image2: [],
-            image3: []
+            image3: [],
+            spinCount: 0
         }
         const numImages = images.length;
         // image 1, 2, 3
@@ -45,6 +46,8 @@ class Spinner extends Component {
         for (let i = 0; i < imagesPerTile; i++) {
             st.image3.push(Math.floor(numImages * Math.random()));
         }
+
+        st.spinCount = st.image3.length-1;
 
         this.setState(st);
     }
