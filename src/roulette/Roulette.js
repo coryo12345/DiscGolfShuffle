@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop: 20,
         padding: 30,
         lineHeight: 20,
         alignContent: 'center',

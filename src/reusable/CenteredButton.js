@@ -18,7 +18,7 @@ class CenteredButton extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{ ...this.props.style }}>
                 <TouchableOpacity
                     activeOpacity={DisplayConfig.buttonOpacity}
                     style={styles.buttonCenter}
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        marginTop: 50,
+        marginTop: 20,
         marginLeft: 'auto',
         marginRight: 'auto',
         elevation: 3,

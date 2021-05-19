@@ -29,3 +29,8 @@ export var RouletteDefaultConfig = {
         Thumber: false,
     }
 }
+
+export var ShufflePlayers = [];
+export function setShufflePlayers(players) {
+    ShufflePlayers = players;
+}

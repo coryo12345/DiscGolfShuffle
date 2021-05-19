@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { GlobalAppStates } from './storage/Constants';
 import CenteredButton from './reusable/CenteredButton';
 
@@ -10,8 +10,6 @@ class HomeScreen extends Component {
         super(props);
         // set state variables
         this.state = {}
-        // set constants
-        this.constants = { buttonOpacity: 0.93 }
     }
 
     render() {
@@ -23,6 +21,7 @@ class HomeScreen extends Component {
                     <CenteredButton 
                         action={()=>{this.props.navigation.navigate(GlobalAppStates.shuffle)}}
                         label="Shuffle Mode" />
+                    <View style={{ height: 20 }} />
                     <CenteredButton 
                         action={()=>{this.props.navigation.navigate(GlobalAppStates.roulette)}}
                         label="Roulette Mode" />
