@@ -70,43 +70,15 @@ class Roulette extends Component {
 
 function randomRollString() {
     let options = RouletteDefaultConfig;
-    // get angle
-    var keys = Object.keys(options.angle);
-    for (let i = keys.length-1; i >= 0; i--) {
-        if (options.angle[keys[i]] === false) {
-            keys.splice(i, 1);
-        }
-    }
-    if (keys.length == 0)
-        var angle_str = "";
-    else
-        var angle_str = keys[keys.length * Math.random() << 0]
-    // get stability
-    var keys = Object.keys(options.stability);
-    for (let i = keys.length-1; i >= 0; i--) {
-        if (options.stability[keys[i]] === false) {
-            keys.splice(i, 1);
-        }
-    }
-    if (keys.length == 0)
-        var stable_str = "";
-    else
-        var stable_str = keys[keys.length * Math.random() << 0]
-    // get speed
-    var keys = Object.keys(options.speed);
-    for (let i = keys.length-1; i >= 0; i--) {
-        if (options.speed[keys[i]] === false) {
-            keys.splice(i, 1);
-        }
-    }
-    if (keys.length == 0)
-        var speed_str = "";
-    else
-        var speed_str = keys[keys.length * Math.random() << 0]
     
+    // get angle
+    var angle_str = randomRollStringPart(options, 'angle');
+    // get stability
+    var stable_str = randomRollStringPart(options, 'stability');
+    // get speed
+    var speed_str = randomRollStringPart(options, 'speed');
     // get arm
     var arm_str = randomRollStringPart(options, 'arm');
-
     // get throwing style/direction
     var dir_str = randomRollStringPart(options, 'direction');
 
@@ -129,9 +101,14 @@ function randomRollString() {
         var disc_part = `, with a(n) ${stable_str} ${speed_str}`.trimEnd();
     
     return `Throw${style_part}${angle_part}${disc_part}`.trim();
-    // return `${arm_str} ${dir_str} ${angle_str} ${stable_str} ${speed_str}`.trim();
 }
 
+/**
+ * helper function for randomRollString
+ * @param {object} options 
+ * @param {String} category 
+ * @returns {String}
+ */
 function randomRollStringPart(options, category) {
     var keys = Object.keys(options[category]);
     for (let i = keys.length-1; i >= 0; i--) {
