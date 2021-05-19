@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
-import { GlobalAppStates, DisplayConfig, RouletteDefaultConfig } from '../Constants';
+import { GlobalAppStates, DisplayConfig } from '../storage/Constants';
+import { RouletteDefaultConfig } from '../storage/Volitale';
 import CenteredButton from '../reusable/CenteredButton';
 import Spinner from './RouletteSpinner';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -79,7 +80,7 @@ function randomRollString() {
     if (keys.length == 0)
         var angle_str = "";
     else
-        var angle_str = keys[keys.length * Math.random() << 0] + " release, "
+        var angle_str = keys[keys.length * Math.random() << 0]
     // get stability
     var keys = Object.keys(options.stability);
     for (let i = keys.length-1; i >= 0; i--) {
@@ -103,10 +104,46 @@ function randomRollString() {
     else
         var speed_str = keys[keys.length * Math.random() << 0]
     
-    if (angle_str==="" && stable_str==="" && speed_str==="")
-        return "Wildcard! Player's Choice."
+    // get arm
+    var arm_str = randomRollStringPart(options, 'arm');
+
+    // get throwing style/direction
+    var dir_str = randomRollStringPart(options, 'direction');
+
+    // check if all empty
+    if (angle_str==="" && stable_str==="" && speed_str==="" && arm_str==="" && dir_str==="")
+        return "Wildcard! Players' Choice."
     
-    return `${angle_str} ${stable_str} ${speed_str}`;
+    // format output
+    var style_part = "";
+    var angle_part = "";
+    var disc_part = "";
+    // throwing style prefix: 'lhbh' or 'rhfh'
+    if (arm_str!=="" || dir_str!=="")
+        var style_part = ` a ${arm_str} ${dir_str}`.trimEnd();
+    // release angle
+    if (angle_str!=="")
+        var angle_part = ` on a ${angle_str} release angle`.trimEnd();
+    // disc type
+    if (stable_str!=="" || speed_str!=="")
+        var disc_part = `, with a(n) ${stable_str} ${speed_str}`.trimEnd();
+    
+    return `Throw${style_part}${angle_part}${disc_part}`.trim();
+    // return `${arm_str} ${dir_str} ${angle_str} ${stable_str} ${speed_str}`.trim();
+}
+
+function randomRollStringPart(options, category) {
+    var keys = Object.keys(options[category]);
+    for (let i = keys.length-1; i >= 0; i--) {
+        if (options[category][keys[i]] === false) {
+            keys.splice(i, 1);
+        }
+    }
+    if (keys.length == 0)
+        var str = "";
+    else
+        var str = keys[keys.length * Math.random() << 0]
+    return str;
 }
 
 const styles = StyleSheet.create({

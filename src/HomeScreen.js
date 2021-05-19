@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { GlobalAppStates } from './Constants';
+import { GlobalAppStates } from './storage/Constants';
 import CenteredButton from './reusable/CenteredButton';
 
 const background_image = require('../assets/disc_golf_basket.jpg')

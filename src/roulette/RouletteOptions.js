@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Platform } from 'react-native';
-import { RouletteDefaultConfig, GlobalAppStates, DisplayConfig } from '../Constants';
+import { RouletteDefaultConfig } from '../storage/Volitale';
 import CheckBox from 'react-native-check-box';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -54,6 +54,19 @@ class RouletteOptions extends Component {
                     {this.Toggle('speed', 'Midrange')}
                     {this.Toggle('speed', 'Fairway')}
                     {this.Toggle('speed', 'Driver')}
+                </View>
+                <View style={styles.partition}>
+                    <Text style={styles.bold}>Toggle Handedness</Text>
+                    {this.Toggle('arm', 'Left Handed')}
+                    {this.Toggle('arm', 'Right Handed')}
+                </View>
+                <View style={styles.partition}>
+                    <Text style={styles.bold}>Toggle Throwing Style</Text>
+                    {this.Toggle('direction', 'Backhand')}
+                    {this.Toggle('direction', 'Forehand')}
+                    {this.Toggle('direction', 'Grenade')}
+                    {this.Toggle('direction', 'Tomahawk')}
+                    {this.Toggle('direction', 'Thumber')}
                 </View>
             </ScrollView>
         )

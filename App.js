@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/HomeScreen';
 import Roulette from './src/roulette/Roulette';
 import ShuffleScreen from './src/ShuffleScreen';
-import { GlobalAppStates, DisplayConfig } from './src/Constants';
+import { GlobalAppStates, DisplayConfig } from './src/storage/Constants';
 import RouletteOptions from './src/roulette/RouletteOptions';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
