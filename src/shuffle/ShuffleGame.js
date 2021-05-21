@@ -76,6 +76,8 @@ class ShuffleGame extends Component {
             var cards = this.state.currentTwist;
         }
 
+        // TODO pick a random player to choose
+        // TODO format display!!!!
         return (
             <SafeAreaView style={{ height: '100%', width: '100%' }}>
                 {cards}
