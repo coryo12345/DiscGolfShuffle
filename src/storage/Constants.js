@@ -18,3 +18,23 @@ export const ShuffleRules = [
     "Some twists will allow players to make choices some will not. Sometimes you will have multiple options for twist to use. In this case, it is up to the designated player or group shown to choose.",
     "Shuffle is a game of chance, some twists may play in your favor, others may not. Who will get lucky? Who will make the smart choices? Only one way to find out!",
 ];
+
+export const Twists = [
+    ["$player1", "can swap drives with any other player"],
+    ["$player1", "must make all putts twice, otherwise play continues from the closest missed putt"],
+    ["$player1", "may not putt with a putter"],
+    ["$player1", "must throw a putter off the tee"],
+    ["$player1", "may move all of their lies 5 feet in any direction"],
+    ["$player1", "must move all of their lies 5 feet further away from the basket"],
+    ["$player1", "may swap drives with", "$player2"],
+    ["$player1", "picks what disc", "$player2", "drives with"],
+    ["$player1", "must throw a 360 drive"],
+    ["$player1", "must move any of their lies within 30 feet of the basket to at least 30 feet away"],
+    ["$player1", "can opt to throw a second shot after any first shot, but they must take the second"],
+    ["$player1", "can throw a second shot once this hole, and may use it if they want"],
+    ["$player1", "can decide to throw for", "$player2", "once this hole"],
+    ["$player1", "must throw with their non-dominant hand for the drive"],
+    ["$player1", "must throw with their non-dominant hand for the entire hole"],
+    ["$player1", "can subtract 1 from their strokes on this hole"],
+    ["$player1", "must add 1 to their strokes on this hole"],
+]

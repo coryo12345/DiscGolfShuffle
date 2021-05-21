@@ -3,7 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CenteredButton from '../reusable/CenteredButton';
 import { ShuffleRules } from '../storage/Constants';
-import { setShufflePlayers, ShufflePlayers } from '../storage/Volitale';
+import { setShufflePlayers, setShuffleTwist, ShufflePlayers } from '../storage/Volitale';
+import ShuffleGame from './ShuffleGame';
 import ShuffleSetup from './ShuffleSetup';
 
 const GameState = {
@@ -29,6 +30,7 @@ class ShuffleScreen extends Component {
         if (this.state.gameState === GameState.setup) {
             this.setState({ players: players, gameState: GameState.ingame });
             setShufflePlayers(players);
+            setShuffleTwist("");
         }
     }
 
@@ -81,7 +83,7 @@ class ShuffleScreen extends Component {
         else if (this.state.gameState === GameState.ingame) {
             var screenDisplay = (
                 <View>
-                    <Text>GAME</Text>
+                    <ShuffleGame players={this.state.players} />
                 </View>
             );
         }

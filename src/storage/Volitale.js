@@ -34,3 +34,8 @@ export var ShufflePlayers = [];
 export function setShufflePlayers(players) {
     ShufflePlayers = players;
 }
+
+export var ShuffleTwist = "";
+export function setShuffleTwist(twist) {
+    ShuffleTwist = twist;
+}

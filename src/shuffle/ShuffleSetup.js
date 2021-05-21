@@ -6,6 +6,7 @@ class ShuffleSetup extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showError: false,
             players: ["", ""] // start with 2 because it requires 2 players.
         };
     }
@@ -26,20 +27,35 @@ class ShuffleSetup extends Component {
     }
 
     submit = () => {
-        // TODO require at least 2 groups.
-        this.props.startGame(this.state.players);
+        var pl = [];
+        this.state.players.forEach((val, _) => {
+            if (val.trim() !== "")
+                pl.push(val);
+        });
+        if (pl.length < 2)
+            this.setState({ showError: true });
+        else
+            this.props.startGame(pl);
     }
 
     render() {
         const inputs = [];
         for (let i = 0; i < this.state.players.length; i++) {
+            let removable = i < 2 ? false : true;
             inputs.push(
-                <NameLine key={i} index={i} updateName={this.updateName} removeName={this.removeName} />
+                <NameLine key={i} index={i} updateName={this.updateName} removable={removable} removeName={this.removeName} />
             );
         }
 
+        var err = (<View />);
+        if (this.state.showError)
+            var err = (
+                <Text style={{ fontSize: 18, color: '#d00', textAlign: 'center', marginTop: 10 }}>Shuffle Requires 2 Groups</Text>
+            );
+
         return (
             <SafeAreaView style={styles.container}>
+                {err}
                 <Text style={{ ...styles.rowItem, ...styles.center, fontSize: 20 }}>Enter Players:</Text>
                 <ScrollView>
                     {inputs}
@@ -50,7 +66,7 @@ class ShuffleSetup extends Component {
                         <View style={{ ...styles.plus, width: '12%', height: '60%', top: '20%', left: '44%' }} />
                     </TouchableOpacity>
                 </ScrollView>
-                <CenteredButton 
+                <CenteredButton
                     style={{ marginBottom: 20 }}
                     action={this.submit}
                     label="Start Game" />
@@ -60,9 +76,10 @@ class ShuffleSetup extends Component {
 }
 
 function NameLine(props) {
-    index = props.index;
-    updateName = props.updateName;
-    removeName = props.removeName;
+    var index = props.index;
+    var updateName = props.updateName;
+    var removeName = props.removeName;
+    var removable = props.removable;
     const [name, chName] = React.useState("");
 
     var changeName = (val) => {
@@ -70,18 +87,27 @@ function NameLine(props) {
         updateName(index, val);
     }
 
-    return (
-        <View style={{ width: '94%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 10, flexDirection: 'row' }}>
-            <TextInput
-                style={{ fontSize: 20, height: 30, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 4 }}
-                onChangeText={changeName}
-                placeholder="Enter Player/Team Name"
-                value={name} />
+    if (removable) {
+        var removeBtn = (
             <TouchableOpacity
                 style={{ width: 20, height: 20, margin: 5, borderRadius: 10, backgroundColor: '#d00' }}
                 onPress={() => { removeName(index) }} >
                 <View style={{ width: '60%', height: '14%', backgroundColor: '#eee', marginTop: 'auto', marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto' }} />
             </TouchableOpacity>
+        );
+    }
+    else {
+        var removeBtn = <View />;
+    }
+
+    return (
+        <View style={{ width: '94%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 10, flexDirection: 'row' }}>
+            <TextInput
+                style={{ fontSize: 20, height: 34, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 6 }}
+                onChangeText={changeName}
+                placeholder="Enter Player/Team Name"
+                value={name} />
+            {removeBtn}
         </View>
     )
 }
@@ -107,8 +133,6 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         position: 'absolute',
-        // top: '20%',
-        // left: '20%',
     }
 });
 
