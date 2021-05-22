@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import CenteredButton from '../reusable/CenteredButton';
 import { DisplayConfig, Twists } from '../storage/Constants';
 import { setShuffleTwist, ShuffleTwist } from '../storage/Volitale';
 
@@ -9,7 +11,8 @@ class ShuffleGame extends Component {
         this.state = {
             players: this.props.players,
             currentTwist: ShuffleTwist,
-            twists: []
+            twists: [],
+            playerChoose: "",
         };
     }
 
@@ -58,29 +61,43 @@ class ShuffleGame extends Component {
             );
         }
 
-        return cards;
+        // pick a random player
+        let p = this.state.players[this.state.players.length * Math.random() << 0];
+
+        this.state.twists = cards;
+        this.state.playerChoose = p;
+    }
+
+    nextHole = () => {
+        this.setState({
+            currentTwist: "",
+            twists: [],
+        });
+        setShuffleTwist("");
     }
 
     render() {
         if (this.state.currentTwist === "") {
             if (this.state.twists.length === 0) {
-                let t = this.randomTwists();
-                this.state.twists = t;
-                var cards = t;
+                this.randomTwists();
             }
-            else {
-                var cards = this.state.twists;
-            }
+            var cards = this.state.twists;
+            var plChs = <Text style={styles.titleText}>{this.state.playerChoose} Must Choose One:</Text>
+            var nextBtn = <View />
         }
         else {
             var cards = this.state.currentTwist;
+            var plChs = <Text style={styles.titleText}>Current Twist</Text>
+            var nextBtn = <CenteredButton action={this.nextHole} label="Next Hole" />
         }
 
-        // TODO pick a random player to choose
-        // TODO format display!!!!
         return (
-            <SafeAreaView style={{ height: '100%', width: '100%' }}>
-                {cards}
+            <SafeAreaView style={styles.container}>
+                {plChs}
+                <ScrollView style={styles.container}>
+                    {cards}
+                </ScrollView>
+                {nextBtn}
             </SafeAreaView>
         );
     }
@@ -93,15 +110,15 @@ function TwistCard(props) {
 
     if (props.choosable) {
         var c = (
-            <TouchableOpacity style={{ height: 30, width: '50%', marginLeft: 'auto', marginRight: 'auto', backgroundColor: DisplayConfig.main, }} onPress={props.onChoose} >
-                <Text style={{ height: 24 }}>Choose</Text>
+            <TouchableOpacity style={styles.chooseButton} onPress={props.onChoose} >
+                <Text style={{ flex: 1, width: '100%', textAlign: 'center', color: '#fff', fontSize: 21 }}>Choose</Text>
             </TouchableOpacity>
         );
     }
 
     return (
-        <View>
-            <Text style={{ height: 30, lineHeight: 30, width: '100%' }}>{str}</Text>
+        <View style={styles.card}>
+            <Text style={{ flex: 1, fontSize: 19, textAlign: 'center' }}>{str}</Text>
             {c}
         </View>
     );
@@ -109,7 +126,40 @@ function TwistCard(props) {
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        backgroundColor: DisplayConfig.backgroundColor,
+        height: '100%',
+        width: '100%'
+    },
+    card: {
+        backgroundColor: '#fff',
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginBottom: 10,
+        borderRadius: 3,
+        elevation: 3,
+        padding: 15,
+    },
+    chooseButton: {
+        width: '50%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        backgroundColor: DisplayConfig.main,
+        textAlign: 'center',
+        marginTop: 10,
+        borderRadius: 3,
+        padding: 5,
+    },
+    titleText: {
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        textAlign: 'center',
+        fontSize: 22,
+        marginTop: 20,
+        marginBottom: 20
+    }
 });
 
 export default ShuffleGame;

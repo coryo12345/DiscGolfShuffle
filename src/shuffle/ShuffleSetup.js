@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import CenteredButton from '../reusable/CenteredButton';
+import { DisplayConfig } from '../storage/Constants';
 
 class ShuffleSetup extends Component {
     constructor(props) {
@@ -50,11 +51,11 @@ class ShuffleSetup extends Component {
         var err = (<View />);
         if (this.state.showError)
             var err = (
-                <Text style={{ fontSize: 18, color: '#d00', textAlign: 'center', marginTop: 10 }}>Shuffle Requires 2 Groups</Text>
+                <Text style={{ fontSize: 18, color: '#d00', textAlign: 'center', marginTop: 10 }}>Shuffle Requires at Least 2 Groups</Text>
             );
 
         return (
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={{ backgroundColor: DisplayConfig.backgroundColor, ...styles.container }}>
                 {err}
                 <Text style={{ ...styles.rowItem, ...styles.center, fontSize: 20 }}>Enter Players:</Text>
                 <ScrollView>
@@ -103,7 +104,7 @@ function NameLine(props) {
     return (
         <View style={{ width: '94%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 10, flexDirection: 'row' }}>
             <TextInput
-                style={{ fontSize: 20, height: 34, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 6 }}
+                style={{ backgroundColor: '#fff', fontSize: 20, height: 34, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 6 }}
                 onChangeText={changeName}
                 placeholder="Enter Player/Team Name"
                 value={name} />

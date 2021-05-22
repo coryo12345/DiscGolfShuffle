@@ -49,7 +49,7 @@ class Roulette extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.center}>
+            <ScrollView style={{ backgroundColor: DisplayConfig.backgroundColor, ...styles.center}}>
                 <View style={styles.partition}>
                     <Spinner spinState={this.state.spinState} endSpin={this.endSpin} ack={this.startSpinAck} />
                 </View>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     textBackground: {
         width: '90%',
         height: 140,
-        backgroundColor: '#DDD',
+        backgroundColor: '#fff',
         borderRadius: 5,
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+        elevation: 3,
     },
 });
 

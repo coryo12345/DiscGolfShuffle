@@ -106,10 +106,9 @@ const styles = StyleSheet.create({
         elevation: 3,
         marginTop: 20,
         borderRadius: 6,
-        // borderColor: '#000',
-        // borderWidth: 1,
         padding: 10,
         backgroundColor: '#FFF',
+        elevation: 3,
     },
     row: {
         flexDirection: 'row',

@@ -7,7 +7,8 @@ export const GlobalAppStates = {
 
 export const DisplayConfig = {
     main: 'royalblue',
-    buttonOpacity: 0.93
+    buttonOpacity: 0.93,
+    backgroundColor: '#eee',
 };
 
 export const ShuffleRules = [

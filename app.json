@@ -17,7 +17,10 @@
             "**/*"
         ],
         "ios": {
-            "supportsTablet": true
+            "supportsTablet": true,
+            "config": {
+                "googleMobileAdsAppId": "ca-app-pub-6094925353807017~2511712491"
+            }
         },
         "android": {
             "adaptiveIcon": {
@@ -25,7 +28,10 @@
                 "backgroundColor": "#FFFFFF"
             },
             "package": "com.yourcompany.yourappname",
-            "versionCode": 1
+            "versionCode": 1,
+            "config": {
+                "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
+            }
         },
         "web": {
             "favicon": "./assets/favicon.png"

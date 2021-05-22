@@ -9,3 +9,7 @@ To clean install:
 4. `npm install`
 
 Or run `install.sh` again....
+
+## AD 
+Test Banner Id for IOS is: 
+* ca-app-pub-3940256099942544/2934735716

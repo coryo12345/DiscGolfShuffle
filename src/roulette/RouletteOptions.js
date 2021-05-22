@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Platform } from 'react-native';
 import { RouletteDefaultConfig } from '../storage/Volitale';
 import CheckBox from 'react-native-check-box';
 import { ScrollView } from 'react-native-gesture-handler';
+import { DisplayConfig } from '../storage/Constants';
 
 class RouletteOptions extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class RouletteOptions extends Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView style={{ backgroundColor: DisplayConfig.backgroundColor, flex: 1 }}>
                 <View style={styles.partition}>
                     <Text style={styles.bold}>Toggle Angles</Text>
                     {this.Toggle('angle', 'Hyzer')}

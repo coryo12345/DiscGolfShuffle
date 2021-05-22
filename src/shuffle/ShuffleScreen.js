@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CenteredButton from '../reusable/CenteredButton';
-import { ShuffleRules } from '../storage/Constants';
+import { DisplayConfig, ShuffleRules } from '../storage/Constants';
 import { setShufflePlayers, setShuffleTwist, ShufflePlayers } from '../storage/Volitale';
 import ShuffleGame from './ShuffleGame';
 import ShuffleSetup from './ShuffleSetup';
@@ -44,11 +44,11 @@ class ShuffleScreen extends Component {
                 var currentPlayers = `There is a game in progress with ${this.state.players.length} player`
                 if (this.state.players.length === 1)
                     currentPlayers += '.';
-                else 
+                else
                     currentPlayers += 's.';
                 var continueBtn = (
                     <CenteredButton
-                        action={() => {this.setState({gameState: GameState.ingame})}}
+                        action={() => { this.setState({ gameState: GameState.ingame }) }}
                         label="Continue" />
                 );
             }
@@ -59,7 +59,7 @@ class ShuffleScreen extends Component {
                 );
             }
             var screenDisplay = (
-                <View style={{flex: 1}}>
+                <View style={{ backgroundColor: DisplayConfig.backgroundColor, flex: 1 }}>
                     <Text style={{ textAlign: 'center', fontSize: 30, marginTop: 20, }}>Welcome to Shuffle!</Text>
                     <Text style={{ textAlign: 'center', }}>{currentPlayers}</Text>
                     {continueBtn}
