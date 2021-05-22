@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CenteredButton from '../reusable/CenteredButton';
 import { DisplayConfig, ShuffleRules } from '../storage/Constants';
@@ -24,6 +24,31 @@ class ShuffleScreen extends Component {
 
     componentDidMount() {
         this.setState({ players: ShufflePlayers });
+        if (this.state.players !== []) {
+            this.setHeader(true);
+        }
+    }
+
+    setHeader = (show) => {
+        if (show) {
+            this.props.navigation.setOptions({
+                headerRight: () => (
+                    <TouchableOpacity
+                        style={{ flex: 1, height: '100%', width: '100%', textAlign: 'right', marginRight: 10 }}
+                        activeOpacity={DisplayConfig.buttonOpacity}
+                        onPress={this.endGame} >
+                        <Text style={{ width: '100%', marginTop: 'auto', marginBottom: 'auto', justifyContent: 'center', textAlignVertical: 'center', textAlign: 'right', fontSize: 18, color: DisplayConfig.main }} >End Game</Text>
+                    </TouchableOpacity>
+                )
+            });
+        }
+        else {
+            this.props.navigation.setOptions({
+                headerRight: () => (
+                    <View />
+                )
+            });
+        }
     }
 
     startGame = (players) => {
@@ -31,7 +56,15 @@ class ShuffleScreen extends Component {
             this.setState({ players: players, gameState: GameState.ingame });
             setShufflePlayers(players);
             setShuffleTwist("");
+            this.setHeader(true);
         }
+    }
+
+    endGame = () => {
+        this.setState({ players: [], gameState: GameState.none });
+        setShufflePlayers([]);
+        setShuffleTwist("");
+        this.setHeader(false);
     }
 
     render() {

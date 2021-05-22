@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CenteredButton from '../reusable/CenteredButton';
-import { DisplayConfig, Twists } from '../storage/Constants';
+import { DisplayConfig, GlobalAppStates, Twists } from '../storage/Constants';
 import { setShuffleTwist, ShuffleTwist } from '../storage/Volitale';
 
 class ShuffleGame extends Component {
@@ -92,13 +92,13 @@ class ShuffleGame extends Component {
         }
 
         return (
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
                 {plChs}
                 <ScrollView style={styles.container}>
                     {cards}
                 </ScrollView>
                 {nextBtn}
-            </SafeAreaView>
+            </View>
         );
     }
 }
@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: DisplayConfig.backgroundColor,
         height: '100%',
-        width: '100%'
+        width: '100%',
+        paddingBottom: 10
     },
     card: {
         backgroundColor: '#fff',

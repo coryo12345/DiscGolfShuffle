@@ -10,6 +10,13 @@ To clean install:
 
 Or run `install.sh` again....
 
-## AD 
-Test Banner Id for IOS is: 
-* ca-app-pub-3940256099942544/2934735716
+## TODO
+* Unify colors per-OS
+* roulette cancel timeout on unmount
+* App storage
+* App settings
+* Personalized ad setting
+* Text scale setting
+* Background image
+* Gear image
+* Spinner icons?
