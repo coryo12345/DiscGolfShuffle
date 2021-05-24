@@ -19,6 +19,7 @@ class Spinner extends Component {
             image1: [],
             image2: [],
             image3: [],
+            timeoutId: null,
         }
     }
 
@@ -63,7 +64,13 @@ class Spinner extends Component {
             this.state.spinCount = 0;
         }
         if (this.props.spinState == 2) {
-            setTimeout(this.spinTick, updateDelay*1000);
+            this.state.timeoutId = setTimeout(this.spinTick, updateDelay*1000);
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.state.timeoutId !== null) {
+            clearTimeout(this.state.timeoutId);
         }
     }
 
@@ -93,7 +100,6 @@ const SpinItem = (props) => {
     return (
         <View style={styles.spintile}>
             <Image source={props.image} style={styles.image} />
-            {/* <Text>{props.image}</Text> */}
         </View>
     );
 }

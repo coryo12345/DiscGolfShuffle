@@ -3,6 +3,7 @@ export const GlobalAppStates = {
     roulette: 'Roulette',
     rouletteOptions: 'Roulette Configuration',
     shuffle: 'Shuffle',
+    settings: 'Settings',
 };
 
 export const DisplayConfig = {
@@ -39,3 +40,30 @@ export const Twists = [
     ["$player1", "can subtract 1 from their strokes on this hole"],
     ["$player1", "must add 1 to their strokes on this hole"],
 ]
+
+export const Settings = {
+    firstStart: {
+        id: "settings.firstStart", 
+        display: false, 
+        text: "", // no display so not needed
+        default: true,
+        type:  'n/a', // if display == true
+        values: 'n/a', // for dropdown
+    },
+    // textScale: {
+    //     id: "settings.textScale", 
+    //     display: true,
+    //     text: "Text Scaling",
+    //     default: 1.0,
+    //     type: 'slider',
+    //     values: 'n/a',
+    // },
+    personalizedAds: {
+        id: "settings.personalAds", 
+        display: true,
+        text: "Allow Personalized Ads",
+        default: false,
+        type: 'checkbox',
+        values: 'n/a',
+    },
+}

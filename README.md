@@ -11,11 +11,7 @@ To clean install:
 Or run `install.sh` again....
 
 ## TODO
-* Unify colors per-OS
-* roulette cancel timeout on unmount
-* App storage
 * App settings
-* Personalized ad setting
 * Text scale setting
 * Background image
 * Gear image

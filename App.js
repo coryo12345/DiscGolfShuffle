@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { StyleSheet, Platform, SafeAreaView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/HomeScreen';
@@ -9,6 +9,7 @@ import ShuffleScreen from './src/shuffle/ShuffleScreen';
 import { GlobalAppStates } from './src/storage/Constants';
 import RouletteOptions from './src/roulette/RouletteOptions';
 import Ad from './src/Ad';
+import SettingsScreen from './src/SettingsScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ class App extends Component {
 
     constructor() {
         super();
-        this.state = {}
+        this.state = {};
     }
 
     render() {
@@ -39,6 +40,9 @@ class App extends Component {
                     <Stack.Screen
                         name={GlobalAppStates.shuffle}
                         component={ShuffleScreen} />
+                    <Stack.Screen
+                        name={GlobalAppStates.settings}
+                        component={SettingsScreen} />
                 </Stack.Navigator>
                 <Ad />
             </NavigationContainer>

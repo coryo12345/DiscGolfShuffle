@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CenteredButton from '../reusable/CenteredButton';
-import { DisplayConfig, GlobalAppStates, Twists } from '../storage/Constants';
+import { DisplayConfig, Twists } from '../storage/Constants';
 import { setShuffleTwist, ShuffleTwist } from '../storage/Volitale';
 
 class ShuffleGame extends Component {
