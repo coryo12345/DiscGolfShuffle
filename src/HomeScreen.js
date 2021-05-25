@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import { GlobalAppStates } from './storage/Constants';
+import { DisplayConfig, GlobalAppStates } from './storage/Constants';
 import CenteredButton from './reusable/CenteredButton';
 import { setData, getData } from './storage/NonVolitale';
 import { Settings } from './storage/Constants';
@@ -21,7 +21,12 @@ class HomeScreen extends Component {
             if (val === null) {
                 setDefaultSettings();
             }
-            this.setState({ firstRun: true });
+            else if (val === true) {
+                this.setState({ firstRun: true });
+            }
+            else {
+                setData(Settings.firstStart.id, "false");
+            }
         });
     }
 
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
     },
     textCenter: {
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 30 * DisplayConfig.textScale,
     },
 });
 

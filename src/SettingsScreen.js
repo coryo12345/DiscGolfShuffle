@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         flex: 1,
+        padding: 10,
     }
 });
 

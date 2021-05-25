@@ -1,3 +1,5 @@
+import { PixelRatio } from "react-native";
+
 export const GlobalAppStates = {
     mainmenu: 'Home',
     roulette: 'Roulette',
@@ -10,6 +12,7 @@ export const DisplayConfig = {
     main: 'royalblue',
     buttonOpacity: 0.93,
     backgroundColor: '#eee',
+    textScale: PixelRatio.getFontScale(),
 };
 
 export const ShuffleRules = [
@@ -66,4 +69,12 @@ export const Settings = {
         type: 'checkbox',
         values: 'n/a',
     },
+    darkMode: {
+        id: "settings.darkMode",
+        display: true,
+        text: "Dark Mode",
+        default: false,
+        type: 'checkbox',
+        values: 'n/a',
+    }
 }

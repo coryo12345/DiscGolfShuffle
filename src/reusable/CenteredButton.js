@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     white: {
         color: '#fff',
         fontWeight: '600',
-        fontSize: 20,
+        fontSize: 20 * DisplayConfig.textScale,
     }
 });
 

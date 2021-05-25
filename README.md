@@ -11,8 +11,7 @@ To clean install:
 Or run `install.sh` again....
 
 ## TODO
-* App settings
-* Text scale setting
-* Background image
-* Gear image
-* Spinner icons?
+* Show first run pop-up
+* Use Dark mode setting
+* Get new Background image
+* Get new Gear image

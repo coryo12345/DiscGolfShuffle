@@ -60,7 +60,7 @@ class Roulette extends Component {
                 </View>
                 <View style={styles.partition}>
                     <View style={styles.textBackground}>
-                        <Text style={{ fontSize: 20, textAlign: 'center' }}>{this.state.outputRoll}</Text>
+                        <Text style={{ fontSize: 20 * DisplayConfig.textScale, textAlign: 'center' }}>{this.state.outputRoll}</Text>
                     </View>
                 </View>
             </ScrollView>

@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     bold: {
-        fontSize: 18,
+        fontSize: 18 * DisplayConfig.textScale,
         marginBottom: 5,
     },
 });
