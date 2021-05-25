@@ -12,6 +12,5 @@ Or run `install.sh` again....
 
 ## TODO
 * Show first run pop-up
-* Use Dark mode setting
 * Get new Background image
 * Get new Gear image

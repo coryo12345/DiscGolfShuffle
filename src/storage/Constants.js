@@ -69,12 +69,4 @@ export const Settings = {
         type: 'checkbox',
         values: 'n/a',
     },
-    darkMode: {
-        id: "settings.darkMode",
-        display: true,
-        text: "Dark Mode",
-        default: false,
-        type: 'checkbox',
-        values: 'n/a',
-    }
 }

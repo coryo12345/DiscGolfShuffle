@@ -32,14 +32,6 @@ export var RouletteDefaultConfig = {
     }
 }
 
-// Store here for quick access everywhere else.
-export var DisplayVars = {
-    darkMode: false,
-}
-getData(Settings.darkMode.id, (val) => {
-    DisplayVars.darkMode = val;
-})
-
 export var ShufflePlayers = [];
 export function setShufflePlayers(players) {
     ShufflePlayers = players;
