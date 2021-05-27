@@ -3,7 +3,6 @@ import { PixelRatio } from "react-native";
 export const GlobalAppStates = {
     mainmenu: 'Home',
     roulette: 'Roulette',
-    rouletteOptions: 'Roulette Configuration',
     shuffle: 'Shuffle',
     settings: 'Settings',
 };

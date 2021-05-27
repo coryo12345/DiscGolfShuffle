@@ -35,9 +35,6 @@ class App extends Component {
                         name={GlobalAppStates.roulette}
                         component={Roulette} />
                     <Stack.Screen
-                        name={GlobalAppStates.rouletteOptions}
-                        component={RouletteOptions} />
-                    <Stack.Screen
                         name={GlobalAppStates.shuffle}
                         component={ShuffleScreen} />
                     <Stack.Screen

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Settings } from './storage/Constants';
+import RouletteOptions from './roulette/RouletteOptions';
+import { DisplayConfig, Settings } from './storage/Constants';
 import { getData, setData } from './storage/NonVolitale';
 
 class SettingsScreen extends Component {
@@ -61,7 +62,10 @@ class SettingsScreen extends Component {
 
         return (
             <ScrollView style={styles.container}>
+                <Text style={styles.header}>App Settings</Text>
                 {settingList}
+                <Text style={styles.header}>Roulette Settings</Text>
+                <RouletteOptions style={{marginBottom: 30}} />
             </ScrollView>
         );
     }
@@ -73,6 +77,12 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         padding: 10,
+    },
+    header: {
+        fontSize: 24 * DisplayConfig.textScale,
+        textAlign: 'center',
+        width: '100%',
+        marginTop: 15,
     }
 });
 

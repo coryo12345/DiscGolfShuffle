@@ -44,7 +44,6 @@ class Ad extends Component {
                         style={{ wdith: '100%', }}
                         bannerSize="smartBannerPortrait"
                         adUnitID={AD_UNIT_ID}
-                        // TODO add app setting for this
                         servePersonalizedAds={this.state.personal}
                         onDidFailToReceiveAdWithError={this.onAdError}
                     />

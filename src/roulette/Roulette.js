@@ -6,8 +6,6 @@ import CenteredButton from '../reusable/CenteredButton';
 import Spinner from './RouletteSpinner';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const settingsIcon = require('../../assets/REPLACE_settings_icon.png');
-
 class Roulette extends Component {
     constructor(props) {
         super(props);
@@ -15,19 +13,6 @@ class Roulette extends Component {
             outputRoll: "Press Spin! to make your first roll",
             spinState: 0 // 0: no spin 1: requested spin
         }
-    }
-
-    componentDidMount() {
-        this.props.navigation.setOptions({
-            headerRight: () => (
-                <TouchableOpacity
-                    style={{height: 30, width: 30, marginRight: 10}}
-                    activeOpacity={DisplayConfig.buttonOpacity}
-                    onPress={() => { this.props.navigation.navigate(GlobalAppStates.rouletteOptions) }} >
-                    <Image style={{width: '100%', height: '100%'}} source={settingsIcon} />
-                </TouchableOpacity>
-            ),
-        });
     }
 
     startSpin = () => {

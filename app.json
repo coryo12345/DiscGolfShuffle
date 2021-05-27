@@ -24,10 +24,10 @@
         },
         "android": {
             "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
+                "foregroundImage": "./assets/icon.png",
                 "backgroundColor": "#FFFFFF"
             },
-            "package": "com.yourcompany.yourappname",
+            "package": "com.corydio.discgolfshuffle",
             "versionCode": 1,
             "config": {
                 "googleMobileAdsAppId": "ca-app-pub-6094925353807017~4848093614"

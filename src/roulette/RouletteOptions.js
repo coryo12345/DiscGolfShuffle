@@ -35,7 +35,7 @@ class RouletteOptions extends Component {
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: DisplayConfig.backgroundColor, flex: 1 }}>
+            <ScrollView style={{...this.props.style, backgroundColor: DisplayConfig.backgroundColor, flex: 1 }}>
                 <View style={styles.partition}>
                     <Text style={styles.bold}>Toggle Angles</Text>
                     {this.Toggle('angle', 'Hyzer')}
