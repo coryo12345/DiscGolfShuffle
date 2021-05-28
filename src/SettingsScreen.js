@@ -54,7 +54,6 @@ class SettingsScreen extends Component {
             }
             else if (Settings[key].type == 'slider') {
                 settingList.push(
-                    // Todo add slider and uncomment textScale
                     <View />
                 );
             }

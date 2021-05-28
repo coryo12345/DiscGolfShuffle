@@ -11,6 +11,4 @@ To clean install:
 Or run `install.sh` again....
 
 ## TODO
-* Show first run pop-up
 * Get new Background image
-* Get new Gear image
