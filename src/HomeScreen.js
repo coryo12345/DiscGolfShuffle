@@ -43,9 +43,8 @@ class HomeScreen extends Component {
     render() {
         var overlay = <View />;
         if (this.state.firstRun === true) {
-            // TODO ask for personalized ads
             var overlay = (
-                <SafeAreaView>
+                // <SafeAreaView>
                     <View style={styles.overlay}>
                         <Text style={{ fontSize: 22 * DisplayConfig.textScale, textAlign: 'center', marginBottom: 10, }}>Thanks for using Disc Golf Shuffle.</Text>
                         <Text style={{ fontSize: 16 * DisplayConfig.textScale, textAlign: 'center' }}>We use banner ads at the bottom of the app to help fund this project. We give you the option to enable or disable personalized ads for this device. If you agree, the ads shown to you will more relevant to you. The choice is up to you. You can always change this later in Settings.</Text>
@@ -64,7 +63,7 @@ class HomeScreen extends Component {
                             </View>
                         </View>
                     </View>
-                </SafeAreaView>
+                // </SafeAreaView>
             );
         }
 
@@ -124,7 +123,7 @@ const styles = StyleSheet.create({
     },
     overlay: {
         width: '100%',
-        height: '100%',
+        height: 90000,
         backgroundColor: '#fff',
         padding: 20,
         fontSize: 18 * DisplayConfig.textScale,
