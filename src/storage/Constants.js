@@ -24,7 +24,7 @@ export const ShuffleRules = [
 ];
 
 export const Twists = [
-    ["$player1", "can swap drives with any other player"],
+    ["$player1", "may swap drives with any other player"],
     ["$player1", "must make all putts twice, otherwise play continues from the closest missed putt"],
     ["$player1", "may not putt with a putter"],
     ["$player1", "must throw a putter off the tee"],

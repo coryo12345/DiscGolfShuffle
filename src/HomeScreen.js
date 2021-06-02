@@ -46,19 +46,19 @@ class HomeScreen extends Component {
             var overlay = (
                 // <SafeAreaView>
                     <View style={styles.overlay}>
-                        <Text style={{ fontSize: 22 * DisplayConfig.textScale, textAlign: 'center', marginBottom: 10, }}>Thanks for using Disc Golf Shuffle.</Text>
-                        <Text style={{ fontSize: 16 * DisplayConfig.textScale, textAlign: 'center' }}>We use banner ads at the bottom of the app to help fund this project. We give you the option to enable or disable personalized ads for this device. If you agree, the ads shown to you will more relevant to you. The choice is up to you. You can always change this later in Settings.</Text>
+                        <Text style={{ fontSize: 22 , /* * DisplayConfig.textScale, */ textAlign: 'center', marginBottom: 10, }}>Thanks for using Disc Golf Shuffle.</Text>
+                        <Text style={{ fontSize: 16 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>We use banner ads at the bottom of the app to help fund this project. We give you the option to enable or disable personalized ads for this device. If you agree, the ads shown to you will more relevant to you. The choice is up to you. You can always change this later in Settings.</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 20 }}>
                             <View style={{ maxWidth: '50%', }}>
                                 <TouchableOpacity style={{ backgroundColor: DisplayConfig.main, ...styles.button }} activeOpacity={DisplayConfig.buttonOpacity} onPress={() => {this.confirm(true)}}>
-                                    <Text style={{ color: '#fff', fontSize: 19 * DisplayConfig.textScale, textAlign: 'center' }}>Yes</Text>
-                                    <Text style={{ color: '#fff', fontSize: 14 * DisplayConfig.textScale, textAlign: 'center' }}>Show me personalized ads</Text>
+                                    <Text style={{ color: '#fff', fontSize: 19 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>Yes</Text>
+                                    <Text style={{ color: '#fff', fontSize: 14 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>Show me personalized ads</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={{ maxWidth: '50%', }}>
                                 <TouchableOpacity style={{ backgroundColor: '#ddd', ...styles.button }} activeOpacity={DisplayConfig.buttonOpacity} onPress={() => {this.confirm(false)}}>
-                                    <Text style={{ fontSize: 19 * DisplayConfig.textScale, textAlign: 'center' }}>No</Text>
-                                    <Text style={{ fontSize: 14 * DisplayConfig.textScale, textAlign: 'center' }}>Show me random ads</Text>
+                                    <Text style={{ fontSize: 19 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>No</Text>
+                                    <Text style={{ fontSize: 14 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>Show me random ads</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -119,14 +119,14 @@ const styles = StyleSheet.create({
     },
     textCenter: {
         textAlign: 'center',
-        fontSize: 30 * DisplayConfig.textScale,
+        fontSize: 30, /* * DisplayConfig.textScale, */
     },
     overlay: {
         width: '100%',
         height: 90000,
         backgroundColor: '#fff',
         padding: 20,
-        fontSize: 18 * DisplayConfig.textScale,
+        fontSize: 18 , /* * DisplayConfig.textScale, */
         paddingTop: 60,
         alignContent: 'center',
         justifyContent: 'center',
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         textAlign: 'center',
-        minHeight: 80 * DisplayConfig.textScale,
+        minHeight: 80 , /* * DisplayConfig.textScale, */
     }
 });
 

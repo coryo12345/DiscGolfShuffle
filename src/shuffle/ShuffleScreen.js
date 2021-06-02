@@ -24,7 +24,7 @@ class ShuffleScreen extends Component {
 
     componentDidMount() {
         this.setState({ players: ShufflePlayers });
-        if (this.state.players !== []) {
+        if (this.state.players.length !== 0) {
             this.setHeader(true);
         }
     }
@@ -37,7 +37,7 @@ class ShuffleScreen extends Component {
                         style={{ flex: 1, height: '100%', width: '100%', textAlign: 'right', marginRight: 10 }}
                         activeOpacity={DisplayConfig.buttonOpacity}
                         onPress={this.endGame} >
-                        <Text style={{ width: '100%', marginTop: 'auto', marginBottom: 'auto', justifyContent: 'center', textAlignVertical: 'center', textAlign: 'right', fontSize: 18 * DisplayConfig.textScale, color: DisplayConfig.main }} >End Game</Text>
+                        <Text style={{ width: '100%', marginTop: 'auto', marginBottom: 'auto', justifyContent: 'center', textAlignVertical: 'center', textAlign: 'right', fontSize: 18 , /* * DisplayConfig.textScale, */ color: DisplayConfig.main }} >End Game</Text>
                     </TouchableOpacity>
                 )
             });
@@ -81,26 +81,26 @@ class ShuffleScreen extends Component {
                     currentPlayers += 's.';
                 var continueBtn = (
                     <CenteredButton
-                        action={() => { this.setState({ gameState: GameState.ingame }) }}
+                        action={() => { this.setState({ gameState: GameState.ingame }); this.setHeader(true); }}
                         label="Continue" />
                 );
             }
             var rules = [];
             for (let i = 0; i < ShuffleRules.length; i++) {
                 rules.push(
-                    <Text style={{ textAlign: 'center', fontSize: 18 * DisplayConfig.textScale, padding: 10, }} key={i}>{ShuffleRules[i]}</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 , /* * DisplayConfig.textScale, */ padding: 10, }} key={i}>{ShuffleRules[i]}</Text>
                 );
             }
             var screenDisplay = (
                 <View style={{ backgroundColor: DisplayConfig.backgroundColor, flex: 1 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 30 * DisplayConfig.textScale, marginTop: 20, }}>Welcome to Shuffle!</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 30 , /* * DisplayConfig.textScale, */ marginTop: 20, }}>Welcome to Shuffle!</Text>
                     <Text style={{ textAlign: 'center', }}>{currentPlayers}</Text>
                     {continueBtn}
                     <CenteredButton
                         action={() => { this.setState({ gameState: GameState.setup }) }}
                         label="Start New Game" />
                     <ScrollView style={{ height: '100%', marginBottom: 20, marginTop: 10 }}>
-                        <Text style={{ textAlign: 'center', fontSize: 26 * DisplayConfig.textScale, marginTop: 20, padding: 10 }}>How to Play</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 26 , /* * DisplayConfig.textScale, */ marginTop: 20, padding: 10 }}>How to Play</Text>
                         {rules}
                     </ScrollView>
                 </View>

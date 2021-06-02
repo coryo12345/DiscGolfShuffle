@@ -118,7 +118,7 @@ function TwistCard(props) {
 
     return (
         <View style={styles.card}>
-            <Text style={{ flex: 1, fontSize: 19 * DisplayConfig.textScale, textAlign: 'center' }}>{str}</Text>
+            <Text style={{ flex: 1, fontSize: 19 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>{str}</Text>
             {c}
         </View>
     );
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     chooseButton: {
-        width: '50%',
+        minWidth: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: DisplayConfig.main,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         textAlign: 'center',
-        fontSize: 22 * DisplayConfig.textScale,
+        fontSize: 22 , /* * DisplayConfig.textScale, */
         marginTop: 20,
         marginBottom: 20
     }

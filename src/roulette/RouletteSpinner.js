@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         borderColor: '#333',
         borderWidth: 1,
         margin: 10,
-        minHeight: 100,
+        aspectRatio: 1,
         padding: 10,
     },
     image: {

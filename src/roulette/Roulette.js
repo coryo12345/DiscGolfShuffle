@@ -45,7 +45,7 @@ class Roulette extends Component {
                 </View>
                 <View style={styles.partition}>
                     <View style={styles.textBackground}>
-                        <Text style={{ fontSize: 20 * DisplayConfig.textScale, textAlign: 'center' }}>{this.state.outputRoll}</Text>
+                        <Text style={{ fontSize: 19 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>{this.state.outputRoll}</Text>
                     </View>
                 </View>
             </ScrollView>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     textBackground: {
         width: '90%',
-        height: 140,
+        minHeight: 140,
         backgroundColor: '#fff',
         borderRadius: 5,
         marginLeft: 'auto',

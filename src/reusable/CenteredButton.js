@@ -33,8 +33,8 @@ class CenteredButton extends Component {
 const styles = StyleSheet.create({
     buttonCenter: {
         flexDirection: 'row',
-        height: 50,
-        width: buttonWidth,
+        minHeight: 50,
+        minWidth: buttonWidth,
         backgroundColor: DisplayConfig.main,
         alignItems: 'center',
         alignContent: 'center',
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     white: {
         color: '#fff',
         fontWeight: '600',
-        fontSize: 20 * DisplayConfig.textScale,
+        fontSize: 20 , /* * DisplayConfig.textScale, */
+        textAlign: 'center',
     }
 });
 

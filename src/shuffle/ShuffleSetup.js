@@ -51,7 +51,7 @@ class ShuffleSetup extends Component {
         var err = (<View />);
         if (this.state.showError)
             var err = (
-                <Text style={{ fontSize: 18 * DisplayConfig.textScale, color: '#d00', textAlign: 'center', marginTop: 10 }}>Shuffle Requires at Least 2 Groups</Text>
+                <Text style={{ fontSize: 18 , /* * DisplayConfig.textScale, */ color: '#d00', textAlign: 'center', marginTop: 10 }}>Shuffle Requires at Least 2 Groups</Text>
             );
 
         return (
@@ -104,7 +104,7 @@ function NameLine(props) {
     return (
         <View style={{ width: '94%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 10, flexDirection: 'row' }}>
             <TextInput
-                style={{ backgroundColor: '#fff', fontSize: 20 * DisplayConfig.textScale, height: 34, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 6 }}
+                style={{ backgroundColor: '#fff', fontSize: 20 , /* * DisplayConfig.textScale, */ height: 34, flex: 1, borderColor: '#555', borderWidth: 1, borderRadius: 4, padding: 2 }}
                 onChangeText={changeName}
                 placeholder="Enter Player/Team Name"
                 value={name} />

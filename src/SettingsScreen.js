@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     header: {
-        fontSize: 24 * DisplayConfig.textScale,
+        fontSize: 24 , /* * DisplayConfig.textScale, */
         textAlign: 'center',
         width: '100%',
         marginTop: 15,
