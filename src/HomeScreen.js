@@ -47,7 +47,7 @@ class HomeScreen extends Component {
                 // <SafeAreaView>
                     <View style={styles.overlay}>
                         <Text style={{ fontSize: 22 , /* * DisplayConfig.textScale, */ textAlign: 'center', marginBottom: 10, }}>Thanks for using Disc Golf Shuffle.</Text>
-                        <Text style={{ fontSize: 16 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>We use banner ads at the bottom of the app to help fund this project. We give you the option to enable or disable personalized ads for this device. If you agree, the ads shown to you will more relevant to you. The choice is up to you. You can always change this later in Settings.</Text>
+                        <Text style={{ fontSize: 16 , /* * DisplayConfig.textScale, */ textAlign: 'center' }}>We use banner ads at the bottom of the app to help fund this project. We give you the option to enable or disable personalized ads for this device. If you agree, you grant Google AdMob the follow: collection, sharing, and use of personal data for personalization of ads. Which means the ads shown will be more relevant to you. The choice is up to you. You can always change this later in the app settings.</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 20 }}>
                             <View style={{ maxWidth: '50%', }}>
                                 <TouchableOpacity style={{ backgroundColor: DisplayConfig.main, ...styles.button }} activeOpacity={DisplayConfig.buttonOpacity} onPress={() => {this.confirm(true)}}>

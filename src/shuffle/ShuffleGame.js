@@ -111,7 +111,7 @@ function TwistCard(props) {
     if (props.choosable) {
         var c = (
             <TouchableOpacity style={styles.chooseButton} onPress={props.onChoose} >
-                <Text style={{ flex: 1, width: '100%', textAlign: 'center', color: '#fff', fontSize: 21 * DisplayConfig.textScale }}>Choose</Text>
+                <Text style={{ width: '100%', textAlign: 'center', color: '#fff', fontSize: 21 /* * DisplayConfig.textScale */ }}>Choose</Text>
             </TouchableOpacity>
         );
     }
@@ -148,6 +148,9 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         backgroundColor: DisplayConfig.main,
         textAlign: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 10,
         borderRadius: 3,
         padding: 5,
